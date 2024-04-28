@@ -92,13 +92,21 @@ fn main() {
     println!("reference count = {}", Rc::strong_count(&sun)); // 4 references
 
     // TODO
+    let saturn = Planet::Saturn(Rc::clone(&sun));
     println!("reference count = {}", Rc::strong_count(&sun)); // 3 references
+    saturn.details();
 
     // TODO
+    let uranus = Planet::Uranus(Rc::clone(&sun));
     println!("reference count = {}", Rc::strong_count(&sun)); // 2 references
+    uranus.details();
+
 
     // TODO
+    let neptune = Planet::Neptune(Rc::clone(&sun));
     println!("reference count = {}", Rc::strong_count(&sun)); // 1 reference
+    neptune.details();
 
+    
     assert_eq!(Rc::strong_count(&sun), 1);
 }

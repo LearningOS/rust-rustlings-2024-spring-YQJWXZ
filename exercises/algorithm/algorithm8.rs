@@ -68,14 +68,26 @@ impl<T> myStack<T> {
     }
     pub fn push(&mut self, elem: T) {
         //TODO
+        self.q1.enqueue(elem);
     }
     pub fn pop(&mut self) -> Result<T, &str> {
-        //TODO
-		Err("Stack is empty")
+        if self.q1.is_empty(){
+            return Err("Stack is empty");
+        }else {
+            while self.q1.size() > 1{
+                let elem = self.q1.dequeue().unwrap();
+                self.q2.enqueue(elem);
+            }
+
+            let top_element = self.q1.dequeue().unwrap();
+            std::mem::swap(&mut self.q1, &mut self.q2);
+
+            Ok(top_element)
+        }
     }
     pub fn is_empty(&self) -> bool {
 		//TODO
-        true
+        self.q1.is_empty() && self.q2.is_empty()
     }
 }
 

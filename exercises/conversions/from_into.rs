@@ -44,6 +44,19 @@ impl Default for Person {
 
 impl From<&str> for Person {
     fn from(s: &str) -> Person {
+        let mut iter = s.splitn(2, ',');
+        let name = iter.next().map(|n| n.to_string()).unwrap();
+        let age_str = iter.next().map(|a| a.to_string());
+        let age: usize = match age_str {
+            Some(a) => a.parse().ok().expect("Invalid age"),
+            None => 0,
+        };
+
+        Person {
+            name,
+            age
+        }
+
     }
 }
 

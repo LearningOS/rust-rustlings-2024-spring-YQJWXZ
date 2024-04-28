@@ -35,11 +35,11 @@ fn main() {
 }
 
 pub fn create_empty_list() -> List {
-    todo!()
+    List::Nil
 }
 
 pub fn create_non_empty_list() -> List {
-    todo!()
+    List::Cons(1, List::Cons(2, List::Cons(3, List::Nil)))
 }
 
 #[cfg(test)]

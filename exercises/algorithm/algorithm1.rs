@@ -71,7 +71,35 @@ impl<T> LinkedList<T> {
     }
 	pub fn merge(list_a:LinkedList<T>,list_b:LinkedList<T>) -> Self
 	{
-		//TODO
+		//TODO： Implement merge function for two linked list
+        let mut dummy = LinkedList::<T>::new();
+        let mut current = &mut dummy;
+
+        loop {
+            match (list_a.start, list_b.start) {
+                (None, None) => break,
+                (Some(a), None) => {
+                    current.append(a);
+                    list_a = list_a.remove_head();
+                },
+                (None, Some(b)) => {
+                    current.append(b);
+                    list_b = list_b.remove_head();
+                },
+                (Some(a), Some(b)) => {
+                    if a < b {
+                        current.append(a);
+                        list_a = list_a.remove_head()
+                    } else {
+                        current.append(b);
+                        list_b = list_b.remove_head();
+                    }
+                }
+            }
+        }
+
+        dummy.remove_head();
+        
 		Self {
             length: 0,
             start: None,
