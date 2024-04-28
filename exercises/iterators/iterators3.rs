@@ -43,8 +43,7 @@ pub fn divide(a: i32, b: i32) -> Result<i32, DivisionError> {
 // Desired output: Ok([1, 11, 1426, 3])
 fn result_with_list() -> () {
     let numbers = vec![27, 297, 38502, 81];
-    let division_results = numbers.into_iter().map(|n| divide(n, 27));
-    assert_eq!(division_results, vec![1,11,1426,3])
+    numbers.into_iter().map(|n| divide(n, 27)).collect();
 }
 
 // Complete the function and return a value of the correct type so the test
@@ -52,10 +51,7 @@ fn result_with_list() -> () {
 // Desired output: [Ok(1), Ok(11), Ok(1426), Ok(3)]
 fn list_of_results() -> () {
     let numbers = vec![27, 297, 38502, 81];
-    let division_results = numbers.into_iter().map(|n| divide(n, 27));
-    for result in division_results {
-        println!("{:?}", result);
-    }
+    numbers.into_iter().map(|n| divide(n, 27)).collect();
 }
 
 #[cfg(test)]
