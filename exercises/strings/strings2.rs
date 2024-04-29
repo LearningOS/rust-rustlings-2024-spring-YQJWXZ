@@ -17,5 +17,9 @@ fn main() {
 }
 
 fn is_a_color_word(attempt: &str) -> bool {
-    attempt == "green" || attempt == "blue" || attempt == "red"
+    if attempt == "green" || attempt == "blue" || attempt == "red" {
+        true
+    } else {
+        false
+    }
 }
